@@ -25,6 +25,11 @@ public class Cell : MonoBehaviour, IPointerClickHandler
     }
     public void PlacePiece(Piece piece) 
     {
+        if(PlacedPiece != null)
+        {
+            PlacedPiece.Destroy();
+            piece.Upgrade();
+        }
         PlacedPiece = piece;
     }
     public void TakeOutPiece() 

@@ -21,6 +21,7 @@ public class ClickEventManager : MonoBehaviour
         else if(cell.PlacedPiece)
         {
             movePieces.pieceToMove = cell.PlacedPiece;
+            ExternalRules.Instance.TrySetCurrentPawn(cell.PlacedPiece);
             movePieces.pieceToMove.GetPossibleMoves();
         }
         else

@@ -6,17 +6,16 @@ public class Pawn : PieceType
 {
     private static int whitePawnCount = -1;
     private static int blackPawnCount = -1;
-    public override void GetPossibleMoves(Cell[,] board, Vector2Int coordinates, bool isWhite)
+    public override void GetPossibleMoves(Cell[,] board, Piece piece)
     {
-        board.GetBishoplMoves(coordinates);
-        board.GetRoolMoves(coordinates);
+        board.GetPawnMoves(piece);
     }
     public override Vector2Int ToStart(bool isWhite)
     {
         if (isWhite)
         {
             whitePawnCount++;
-            if(whitePawnCount > 7)
+            if (whitePawnCount > 7)
             {
                 return new Vector2Int(0 + (whitePawnCount % 8), 1);
             }

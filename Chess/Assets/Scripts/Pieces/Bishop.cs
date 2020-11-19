@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class Bishop : PieceType
 {
-    public override void GetPossibleMoves(Cell[,] board, Vector2Int coordinates, bool isWhite)
+    public override void GetPossibleMoves(Cell[,] board, Piece piece)
     {
-        board.GetBishoplMoves(coordinates);
+        board.GetBishoplMoves(piece);
     }
     public override Vector2Int ToStart(bool isWhite)
     {

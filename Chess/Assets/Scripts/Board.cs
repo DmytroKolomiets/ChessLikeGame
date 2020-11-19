@@ -2,11 +2,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UIElements;
+using UnityEngine.UI;
 
 public class Board : MonoBehaviour
 {
     [SerializeField] private Transform board;
+    [SerializeField] private RectTransform cellTransform;
     private Vector2Int BoradSize = new Vector2Int(8, 8);
     public Cell[,] Cells { get; private set; }
     [SerializeField] private Cell cell;
@@ -22,7 +23,10 @@ public class Board : MonoBehaviour
         {
             for (int y = 0; y < BoradSize.y; y++)
             {
-                Cells[x, y] = Instantiate(cell, new Vector3(x * 90 + 45, y * 90 + 45, 0), Quaternion.identity);
+                Cells[x, y] = Instantiate(cell, board);
+                Cells[x, y].GetComponent<RectTransform>().localPosition =
+                    new Vector3(x * cellTransform.rect.width + cellTransform.rect.width / 2f,
+                    y * cellTransform.rect.width + cellTransform.rect.width, 0);
                 Cells[x, y].transform.parent = board;
                 Cells[x, y].SetIndex(x, y);
                 Cells[x, y].SetStartColor(GetCellColor(y, x));

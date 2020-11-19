@@ -4,8 +4,17 @@ using UnityEngine;
 
 public abstract class PieceType : MonoBehaviour
 {
-    [SerializeField] private Sprite whiteSprite;
-    [SerializeField] private Sprite blackSprite;
-    public abstract void GetPossibleMoves(Cell[,] board, Vector2Int coordinates, bool isWhite);
+    [SerializeField] private Sprite sprite;
+    [SerializeField] private PieceType nextUpgrade;
+
+    public PieceType GetUpgrade()
+    {
+        return nextUpgrade;
+    }
+    public Sprite GetImage()
+    {
+        return sprite;
+    }
+    public abstract void GetPossibleMoves(Cell[,] board, Piece piece);
     public abstract Vector2Int ToStart(bool isWhite);
 }

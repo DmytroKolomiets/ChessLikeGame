@@ -5,10 +5,10 @@ using UnityEngine;
 
 public class Queen : PieceType
 {
-    public override void GetPossibleMoves(Cell[,] board, Vector2Int coordinates, bool isWhite)
+    public override void GetPossibleMoves(Cell[,] board, Piece piece)
     {
-        board.GetBishoplMoves(coordinates);
-        board.GetRoolMoves(coordinates);
+        board.GetBishoplMoves(piece);
+        board.GetRookMoves(piece);
     }
     public override Vector2Int ToStart(bool isWhite)
     {
